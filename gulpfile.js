@@ -226,6 +226,9 @@ gulp.task('img', function(){
     ]))
     .pipe(gulp.dest(docs + img))
     .pipe(gulp.dest(wordpress + img))
+  gulp.src(src + privateImg + '**/*.ico', {base: src + img})
+    .pipe(gulp.dest(docs + img))
+    .pipe(gulp.dest(wordpress + img))
 });
 
 
