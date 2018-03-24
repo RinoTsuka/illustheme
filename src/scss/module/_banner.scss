@@ -1,0 +1,64 @@
+.banner {
+  @extend .article;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  &::before,
+  &::after {
+    content: "";
+  	position: absolute;
+  }
+  &::before {
+    top: -7px;
+  	right: -7px;
+  	bottom: -7px;
+  	left: -7px;
+    z-index: 1;
+    background: center center;
+    background-size: cover;
+    filter: blur(5px) saturate(40%);
+    opacity: 0.75;
+  }
+  &::after {
+    top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+    z-index: 2;
+    background-color: rgba(#fff, 0.4);
+  }
+  &__body {
+    display: inline-block;
+    position: relative;
+    z-index: 3;
+    transition: 0.3s;
+    width: 468px;
+    max-width: 100%;
+    &.active,
+    &:hover {
+      box-shadow: 0 3px 12px rgba($oc-gray-9, 0.075),
+                  0 18px 17px rgba($oc-gray-9, 0.125);
+    }
+  }
+  &__img {
+    display: block;
+    max-width: 100%;
+  }
+  &__code {
+  }
+  &__input {
+    display: block;
+    appearance: none;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: $line-height * 1.25;
+    color: $oc-gray-6;
+    width: 100%;
+    padding-left: $gutter * 0.75;
+    padding-right: $gutter * 0.75;
+    &:focus {
+      color: $color;
+    }
+  }
+}

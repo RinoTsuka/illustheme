@@ -1,0 +1,304 @@
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+  .slick-track,
+  .slick-list {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  &:focus {
+    outline: none;
+  }
+  .dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+}
+
+.slick-track {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  &::before,
+  &::after {
+    display: table;
+    content: '';
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+.slick-loading {
+  .slick-track {
+    visibility: hidden;
+  }
+  .slick-slide {
+    visibility: hidden;
+  }
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  margin-left: $gutter * 0.25;
+  margin-right: $gutter * 0.25;
+  img {
+    display: block;
+  }
+  &.slick-loading img {
+    display: none;
+  }
+  &.dragging img {
+    pointer-events: none;
+  }
+}
+
+.slider {
+  margin-left: $gutter * 1.5;
+  margin-right: $gutter * 1.5;
+  @include breakpoints-min(sm) {
+    margin-left: $gutter * 4;
+    margin-right: $gutter * 4;
+    &:hover {
+      img:not(:hover) {
+        opacity: 0.3;
+        filter: saturate(30%);
+      }
+    }
+  }
+  @include breakpoints-min(lg) {
+    max-width: #{$gutter * 52};
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include breakpoints-min(xl) {
+    max-width: #{$gutter * 65};
+  }
+  @include breakpoints-min(xxl) {
+    max-width: #{$gutter * 78};
+  }
+  &__item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: $gutter * 0.5;
+  }
+  &__link {
+    display: block;
+  }
+  img {
+    transition: 0.3s;
+    &:active {
+      transform: scale(1.2);
+    }
+    @include breakpoints-min(md) {
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+
+
+.slick-initialized {
+  .slick-slide {
+    display: block;
+  }
+}
+
+.slick-vertical {
+  .slick-slide {
+    display: block;
+    border: 1px solid transparent;
+    height: auto;
+  }
+}
+
+
+
+.slider-nav {
+  position: relative;
+  text-align: center;
+  margin-top: $gutter * 1.25;
+  @include breakpoints-min(md) {
+    margin-top: $gutter * 1.75;
+  }
+  &__inner {
+    display: none;
+    @include breakpoints-min(md) {
+      display: inline-block;
+      position: relative;
+      margin: 0 auto;
+    }
+  }
+}
+
+.slick-arrow {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+  border-radius: 999px;
+  background-color: $theme-color-5;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  padding: #{$gutter * 0.675} #{$gutter * 1.75};
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  &:active {
+    background-color: $theme-color-7;
+  }
+  @include breakpoints-min(md) {
+    position: absolute;
+    border-radius: 0;
+    background-color: transparent;
+    font-weight: 500;
+    color: $oc-gray-8;
+    padding: 0;
+    &:active {
+      background-color: transparent;
+    }
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    transition: 0.3s;
+    width: 10px;
+    height: 10px;
+    @include breakpoints-min(md) {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  &.slick-disabled {
+    cursor: default;
+    background-color: $oc-gray-4;
+    @include breakpoints-min(md) {
+      cursor: pointer;
+      background-color: transparent;
+    }
+  }
+}
+.slick-prev {
+  margin-right: $gutter * 0.75;
+  padding-left: 10px + $gutter * 2.25;
+  @include breakpoints-min(md) {
+    right: 100%;
+    margin-right: $gutter * 1.5;
+    padding-left: 12px + $gutter * 0.75;
+    &:hover {
+      &::before {
+        left: $gutter * 0.125;
+      }
+    }
+  }
+  @include breakpoints-min(lg) {
+    margin-right: $gutter * 2;
+  }
+  &::before {
+    content: "";
+    left: $gutter * 1.875;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    @include breakpoints-min(md) {
+      left: $gutter * 0.375;
+      border-left: 1px solid $oc-gray-8;
+      border-bottom: 1px solid $oc-gray-8;
+    }
+  }
+}
+.slick-next {
+  margin-left: $gutter * 0.75;
+  padding-right: 10px + $gutter * 2;
+  @include breakpoints-min(md) {
+    left: 100%;
+    margin-left: $gutter * 1.5;
+    padding-right: 12px + $gutter * 0.75;
+    &:hover {
+      &::before {
+        right: $gutter * 0.125;
+      }
+    }
+  }
+  @include breakpoints-min(lg) {
+    margin-left: $gutter * 2;
+  }
+  &::before {
+    content: "";
+    right: $gutter * 1.875;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    @include breakpoints-min(md) {
+      right: $gutter * 0.375;
+      border-right: 1px solid $oc-gray-8;
+      border-top: 1px solid $oc-gray-8;
+    }
+  }
+}
+
+.slick-dots {
+  display: none;
+  line-height: 1;
+  @include breakpoints-min(sm) {
+    display: inline-block;
+  }
+  li {
+    @include breakpoints-min(sm) {
+      display: inline-block;
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+  }
+  button {
+    display: block;
+    background-color: $oc-gray-5;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    overflow: hidden;
+    text-indent: -10em;
+    height: 8px;
+    padding: 0 #{$gutter * 0.75};
+    &::-moz-focus-inner {
+      border :0px;
+    }
+  }
+  .slick-active {
+    button {
+      background-color: $theme-color-5;
+    }
+  }
+}

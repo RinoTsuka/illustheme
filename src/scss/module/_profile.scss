@@ -1,0 +1,88 @@
+.profile {
+  &__inner {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    @include breakpoints-min(sm) {
+      display: flex;
+      padding-left: $gutter * 3;
+      padding-right: $gutter * 3;
+    }
+    @include breakpoints-min(md) {
+      max-width: #{$gutter * 38};
+    }
+    @include breakpoints-min(lg) {
+      max-width: #{$gutter * 48};
+    }
+  }
+  &__img-outer {
+    border-radius: 50%;
+    width: 122px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $gutter * 1.175;
+    @include breakpoints-min(sm) {
+      width: 98px;
+      margin-bottom: 0;
+      margin-right: #{$gutter * 2};
+    }
+  }
+  &__img {
+    display: block;
+    border-radius: 50%;
+    border: 1px solid $oc-gray-3;
+    background-color: #fff;
+    width: 100%;
+    padding: 4px;
+  }
+  &__body {
+    @include breakpoints-min(sm) {
+      width: calc(100% - #{96px + $gutter * 2});
+    }
+  }
+  &__name {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: $gutter * 1.25;
+    @include breakpoints-min(sm) {
+      order: 0;
+      text-align: left;
+      margin-bottom: $gutter;
+    }
+    .ruby {
+      display: block;
+      font-size: 11px;
+      color: $oc-gray-6;
+      margin-top: -6px;
+      @include breakpoints-min(sm) {
+        position: relative;
+        display: inline-block;
+        font-size: 12px;
+        margin-top: 0;
+        margin-left: $gutter * 2.25;
+        &::before,
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 50%;
+          z-index: 999;
+          background-color: $oc-gray-6;
+          width: 0.75em;
+          height: 0;
+          padding-top: 1px;
+        }
+        &::before {
+          left: -1.375em;
+        }
+        &::after {
+          right: -1.375em;
+        }
+      }
+    }
+  }
+  &__text {
+  }
+}

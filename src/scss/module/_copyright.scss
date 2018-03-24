@@ -1,0 +1,19 @@
+.copyright {
+  font-size: 13px;
+  line-height: $line-height * 0.875;
+  margin-bottom: $gutter * 2;
+  @include breakpoints-min(sm) {
+    font-size: 12px;
+    text-align: left;
+    line-height: inherit;
+    margin-bottom: 0;
+  }
+  &__site-name {
+    font-size: 15px;
+    @include breakpoints-min(sm) {
+      font-size: 14px;
+    }
+  }
+  &__name {
+  }
+}

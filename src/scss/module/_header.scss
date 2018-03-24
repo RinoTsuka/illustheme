@@ -1,0 +1,20 @@
+.header {
+  padding: #{$gutter * 2} $gutter;
+  text-align: center;
+  @include breakpoints-min(sm) {
+    padding-top: $gutter * 3;
+    padding-bottom: $gutter * 3;
+  }
+  &__heading {
+    font-size: 23px;
+    line-height: 1.3;
+    img {
+      vertical-align: bottom;
+    }
+  }
+  &__heading-sub {
+    font-size: 11px;
+    line-height: 1;
+    color: $oc-gray-6;
+  }
+}

@@ -1,0 +1,95 @@
+.link-collection {
+  $element: &;
+  &__list {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    @include breakpoints-min(sm) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-left: $gutter * 3;
+      padding-right: $gutter * 3;
+    }
+    @include breakpoints-min(md) {
+      max-width: #{$gutter * 38};
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @include breakpoints-min(lg) {
+      max-width: #{$gutter * 54};
+    }
+    @include breakpoints-min(xxl) {
+      max-width: #{$gutter * 80};
+    }
+  }
+  &__item {
+    width: #{468px / 3 * 2};
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $gutter * 1;
+    @include breakpoints-min(sm) {
+      width: calc(#{100% / 2} - #{$gutter * 1});
+      margin: #{$gutter * 0.5} #{$gutter * 0.5};
+    }
+    @include breakpoints-min(lg) {
+      width: calc(#{100% / 3} - #{$gutter * 1.5});
+    }
+    @include breakpoints-min(xxl) {
+      width: calc(#{100% / 4} - #{$gutter * 2});
+    }
+  }
+  &__link {
+    display: block;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &:active {
+      #{$element}__tooltip {
+        pointer-events: auto;
+        top: - $gutter * 3.125;
+        opacity: 1;
+      }
+    }
+    @include breakpoints-min(md) {
+      &:hover {
+        #{$element}__tooltip {
+          pointer-events: auto;
+          top: - $gutter * 3.125;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__img {
+    display: block;
+    transition: 0.4s;
+    width: 100%;
+  }
+  &__tooltip {
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: - $gutter * 2.25;
+    transform: translateX(-50%);
+    transition: 0.4s;
+    opacity: 0;
+    border-radius: 5px;
+    background-color: $oc-gray-9;
+    font-size: 14px;
+    letter-spacing: 0.0125em;
+    color: #fff;
+    padding: #{$gutter * 0.375} #{$gutter * 0.875};
+    &::before{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      border: 6px solid transparent;
+      border-top: 6px solid $oc-gray-9;
+      margin-left: -6px;
+    }
+  }
+}

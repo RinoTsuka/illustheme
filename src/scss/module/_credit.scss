@@ -1,0 +1,23 @@
+.credit {
+  font-size: 12px;
+  color: $oc-gray-5;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-image: linear-gradient(to right, $oc-gray-8, $theme-color-5, $oc-gray-8) 100% 0;
+  padding-top: $gutter * 2;
+  @include breakpoints-min(sm) {
+    border: none;
+    text-align: right;
+    padding-top: 0;
+  }
+  a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #fff;
+    @include breakpoints-min(md) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+// base
+$font-family: "Rounded Mplus 1c", sans-serif;
+$font-size: 14px;
+$font-weight: 400;
+$line-height: 1.9;
+$letter-spacing: 0.05em;
+$color: $oc-gray-8;
+
+// margin
+$gutter: 16px;
+
+
+// breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1456px
+);

@@ -1,0 +1,28 @@
+.footer {
+  background-color: $oc-gray-8;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  text-align: center;
+  line-height: 20px;
+  color: #fff;
+  padding-top: $gutter * 3;
+  padding-bottom: $gutter * 3;
+  &__body {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    @include breakpoints-min(sm) {
+      display: flex;
+      justify-content: space-between;
+      padding-left: $gutter * 3;
+      padding-right: $gutter * 3;
+    }
+    @include breakpoints-min(md) {
+      max-width: #{$gutter * 38};
+    }
+    @include breakpoints-min(lg) {
+      max-width: #{$gutter * 48};
+    }
+  }
+}
