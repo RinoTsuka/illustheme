@@ -80,6 +80,7 @@
     background-color: $oc-gray-9;
     font-size: 14px;
     letter-spacing: 0.0125em;
+    white-space: nowrap;
     color: #fff;
     padding: #{$gutter * 0.375} #{$gutter * 0.875};
     &::before{
