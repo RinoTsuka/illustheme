@@ -23,6 +23,8 @@ var imagemin = require("gulp-imagemin");
 var jpegtran = require('imagemin-jpegtran');
 var pngquant = require('imagemin-pngquant')
 
+var ghPages = require('gulp-gh-pages');
+
 
 
 /* variable
@@ -238,6 +240,14 @@ gulp.task('default',['server'], function() {
   gulp.watch(src + img + '/**/*.{png,jpg,gif,svg}', ['img']);
 });
 
+
+
+/* deploy
+--------------------*/
+gulp.task('gp', function() {
+  return gulp.src('./docs/**/*')
+    .pipe(ghPages());
+});
 
 
 /* all
