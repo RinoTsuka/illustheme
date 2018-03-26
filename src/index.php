@@ -85,14 +85,12 @@
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div class="slider__item"><a href="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' )[0]; ?>" rel="lightbox" class="slider__link"><img src="
         <?php bloginfo('template_url'); ?>/img/gallery/gallery-loading.png" data-src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'post-thumbnail' )[0]; ?>" class="lazyload"></a></div>
-      <?php endwhile; else: ?>
-      <?php endif; ?>
+      <?php endwhile; endif; ?>
     </div>
     <div class="slider-nav">
       <div class="slider-nav__inner"></div>
     </div>
   </article>
-
 
 
   <article class="banner">
@@ -108,6 +106,29 @@
       </div>
     </div>
   </article>
+
+
+
+  <?php
+    $loop = new WP_Query(array("post_type" => "banner"));
+    if ( $loop->have_posts() ) : while($loop->have_posts()): $loop->the_post();
+  ?>
+    <article class="article link-collection">
+      <div class="link-collection__list">
+        <div class="link-collection__item">
+          <?php if ( get_post_meta($post->ID, 'link_code', true) ) :?>
+            <?php echo get_post_meta($post->ID, 'link_code', true); ?>
+          <?php else: ?>
+            <a href="<?php echo get_post_meta($post->ID, 'link_name', true); ?>" target="_blank" class="link-collection__link">
+              <img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'post-thumbnail' )[0]; ?>" class="link-collection__img">
+              <div class="link-collection__tooltip"><?php the_title(); ?></div>
+            </a>
+          <?php endif; ?>
+        </div>
+      </div>
+    </article>
+  <?php endwhile; else: ?>
+  <?php endif; ?>
 
 
 

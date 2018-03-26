@@ -1,6 +1,6 @@
 {
   "name": "illustheme",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "イラストレーター向けのWordPressテーマです。",
   "main": "gulpfile.js",
   "scripts": {
