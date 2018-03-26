@@ -96,10 +96,10 @@ var jsHeader = [
 --------------------*/
 gulp.task('server', function() {
   browser({
-    server: {
+    /*server: {
       baseDir: docs
-    }
-    //proxy: 'localhost:8004'
+    }*/
+    proxy: 'localhost:8004'
   });
 });
 
@@ -229,6 +229,9 @@ gulp.task('img', function(){
   gulp.src(src + privateImg + '**/*.ico', {base: src + img})
     .pipe(gulp.dest(docs + img))
     .pipe(gulp.dest(wordpress + img))
+  gulp.src(src + 'screenshot.png')
+    .pipe(gulp.dest(theme))
+    .pipe(gulp.dest(wordpress))
 });
 
 
