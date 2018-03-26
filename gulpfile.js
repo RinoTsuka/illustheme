@@ -127,6 +127,7 @@ gulp.task('html', function(){
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
     .pipe(replace('class="header__heading-sub">ver<', 'class="header__heading-sub">ver ' + pkg.version + '<'))
+    .pipe(replace('<a href="#" class="demo__button">DOWNLOAD</a>', '<a href="https://github.com/RinoTsuka/illustheme/releases/download/' + pkg.version + '/illustheme.zip" class="demo__button">DOWNLOAD</a>'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(docs))
     .pipe(browser.reload({stream:true}))
