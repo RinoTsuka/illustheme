@@ -18,7 +18,7 @@
       <div class="profile__body">
         <div class="profile__name"><?php echo get_option('it_user_name'); ?><span class="ruby"><?php echo get_option('it_user_name_yomi'); ?></span></div>
         <div class="profile__text">
-          <?php echo get_option('profile'); ?>
+          <?php echo get_option('it_user_profile'); ?>
         </div>
 
 
@@ -117,7 +117,13 @@
       <div class="link-collection__list">
         <div class="link-collection__item">
           <?php if ( get_post_meta($post->ID, 'link_code', true) ) :?>
-            <?php echo get_post_meta($post->ID, 'link_code', true); ?>
+            <?php
+              $arr = explode("\"", get_post_meta($post->ID, 'link_code', true));
+            ?>
+            <a href="<?php echo $arr[1]; ?>" target="_blank" class="link-collection__link">
+              <img src="<?php echo $arr[5]; ?>" class="link-collection__img">
+              <div class="link-collection__tooltip"><?php echo $arr[7]; ?></div>
+            </a>
           <?php else: ?>
             <a href="<?php echo get_post_meta($post->ID, 'link_name', true); ?>" target="_blank" class="link-collection__link">
               <img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'post-thumbnail' )[0]; ?>" class="link-collection__img">

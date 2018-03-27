@@ -29,7 +29,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/script.min.js"></script>
-<?php if(get_option('it_google_analytics')) echo htmlspecialchars_decode(get_option('it_google_analytics')); ?>
+<?php if(get_option('it_google_analytics')) echo stripslashes(htmlspecialchars_decode(get_option('it_google_analytics'))); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

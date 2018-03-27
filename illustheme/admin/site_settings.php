@@ -103,7 +103,7 @@ $setting = array(
     'value' => '',
   ),
   'google_analytics' => array(
-    'form_type' => 'text',
+    'form_type' => 'textarea',
     'label' => 'Google Analytics',
     'description' => 'Google Analyticsのコードをそのままご入力してください。',
     'value' => '',
@@ -122,7 +122,7 @@ foreach($setting as $key => $val){
       $setting[$key]['value'] = get_option($key);
     } else {
       if( get_option($prefixKey) ){
-        $setting[$key]['value'] = get_option($prefixKey);
+        $setting[$key]['value'] = $prefixKey;
       } else {
         add_option($prefixKey);
       }
@@ -139,8 +139,6 @@ foreach($setting as $key => $val){
 };
 ?>
 
-
-
 <h2><?php print get_template(); ?>の設定</h2>
 
 <form method="post" action="admin.php?page=site_settings">
@@ -152,12 +150,17 @@ foreach($setting as $key => $val){
       <?php if ($setting[$key]['form_type'] === 'text' && $key === 'blogname' or $key === 'blogdescription' ) : ?>
         <tr valign="top">
           <th scope="row"><label for="<?php echo $key; ?>"><?php echo $setting[$key]['label']; ?></label></th>
-          <td><input name="<?php echo $key; ?>" type="text" value="<?php echo get_option($key); ?>" class="regular-text"></td>
+          <td><input name="<?php echo $key; ?>" type="text" value="<?php echo stripslashes(get_option($key)); ?>" class="regular-text"></td>
         </tr>
       <?php elseif ($setting[$key]['form_type'] === 'text') : ?>
         <tr valign="top">
           <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
-          <td><input name="<?php echo $prefixKey; ?>" type="text" value="<?php echo get_option($prefixKey); ?>" class="regular-text"></td>
+          <td><input name="<?php echo $prefixKey; ?>" type="text" value="<?php echo stripslashes(get_option($prefixKey)); ?>" class="regular-text"></td>
+        </tr>
+      <?php elseif ($setting[$key]['form_type'] === 'textarea') : ?>
+        <tr valign="top">
+          <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
+          <td><textarea name="<?php echo $prefixKey; ?>" class="regular-text"><?php echo stripslashes(get_option($prefixKey)) ?></textarea></td>
         </tr>
       <?php elseif ($setting[$key]['form_type'] === 'img') : ?>
         <tr valign="top">
