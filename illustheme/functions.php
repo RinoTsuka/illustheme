@@ -34,6 +34,13 @@ add_filter( 'post_type_labels_post', 'custom_post_labels' );
 
 
 // カスタム投稿タイプ
+// css
+function admin_style(){
+    wp_enqueue_style( 'admin_style', get_template_directory_uri().'/css/admin.min.css' );
+}
+add_action( 'admin_enqueue_scripts', 'admin_style' );
+
+
 function create_post_type() {
   $exampleSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
     'title',  // 記事タイトル
@@ -59,19 +66,19 @@ add_filter( 'get_user_option_screen_layout_banner', 'custom_post_one_columns_scr
 
 //画像アップロード用のタグを出力する
 function genelate_upload_image_tag($name, $value){?>
-  <input name="<?php echo $name; ?>" type="text" value="<?php echo $value; ?>" />
-  <input type="button" name="<?php echo $name; ?>_slect" value="選択" />
-  <input type="button" name="<?php echo $name; ?>_clear" value="クリア" />
+  <input name="<?php echo $name; ?>" type="text" value="<?php echo $value; ?>" class="upload_form" />
+  <a href="#" id="<?php echo $name; ?>_slect" class="mediauploader_slect">画像を設定</a>
   <div id="<?php echo $name; ?>_thumbnail" class="uploded-thumbnail">
     <?php if ($value): ?>
       <?php echo wp_get_attachment_image( $value, full ); ?>
+      <div><div id="<?php echo $name; ?>_clear" class="mediauploader_clear">画像を削除</div></div>
     <?php endif ?>
   </div>
 
   <script type="text/javascript">
   (function ($) {
     var custom_uploader;
-    $("input:button[name=<?php echo $name; ?>_slect]").click(function(e) {
+    $("#<?php echo $name; ?>_slect").click(function(e) {
       e.preventDefault();
       if (custom_uploader) {
         custom_uploader.open();
@@ -95,12 +102,12 @@ function genelate_upload_image_tag($name, $value){?>
           $("input:text[name=<?php echo $name; ?>]").val("");
           $("#<?php echo $name; ?>_thumbnail").empty();
           $("input:text[name=<?php echo $name; ?>]").val(file.id);
-          $("#<?php echo $name; ?>_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" />');
+          $("#<?php echo $name; ?>_thumbnail").append('<img src="'+file.attributes.sizes.full.url+'" class="uploded-thumbnail-img" /><div><div id="<?php echo $name; ?>_clear" class="mediauploader_clear">画像を削除</div></div>');
         });
       });
       custom_uploader.open();
     });
-    $("input:button[name=<?php echo $name; ?>_clear]").click(function() {
+    $(document).on("click", "#<?php echo $name; ?>_clear", function () {
       $("input:text[name=<?php echo $name; ?>]").val("");
       $("#<?php echo $name; ?>_thumbnail").empty();
     });
@@ -122,7 +129,8 @@ add_action( 'admin_print_scripts', 'my_admin_scripts' );
 // アイキャッチ 有効化
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size( 400, 400, true );
-
+// サムネイルサイズ追加
+add_image_size( 'favicon', '180', '180', true);
 
 // wyswig 非表示
 function remove_wysiwyg() {

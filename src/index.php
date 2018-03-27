@@ -83,8 +83,7 @@
         );
       ?>
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <div class="slider__item"><a href="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' )[0]; ?>" rel="lightbox" class="slider__link"><img src="
-        <?php bloginfo('template_url'); ?>/img/gallery/gallery-loading.png" data-src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'post-thumbnail' )[0]; ?>" class="lazyload"></a></div>
+        <div class="slider__item"><a href="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' )[0]; ?>" rel="lightbox" class="slider__link"><img src="<?php bloginfo('template_url'); ?>/img/gallery/gallery-loading.png" data-src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'post-thumbnail' )[0]; ?>" class="lazyload"></a></div>
       <?php endwhile; endif; ?>
     </div>
     <div class="slider-nav">

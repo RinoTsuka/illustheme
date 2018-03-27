@@ -158,7 +158,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(theme))
     .pipe(gulp.dest(wordpress))
   // theme
-  gulp.src(src + 'scss/**/*.scss')
+  gulp.src([src + 'scss/**/*.scss', '!' + src + 'scss/**/admin.scss'])
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
@@ -175,6 +175,22 @@ gulp.task('sass', function() {
     .pipe(header('@charset "UTF-8";\n'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(docs + 'css/'))
+    .pipe(gulp.dest(theme + 'css/'))
+    .pipe(gulp.dest(wordpress + 'css/'))
+    .pipe(browser.reload({stream:true}))
+  gulp.src(src + 'scss/**/admin.scss')
+    .pipe(plumber({
+      errorHandler: notify.onError('Error: <%= error.message %>')
+    }))
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(cmq())
+    .pipe(cleanCSS())
+    .pipe(rename({
+      extname: '.min.css'
+    }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(theme + 'css/'))
     .pipe(gulp.dest(wordpress + 'css/'))
     .pipe(browser.reload({stream:true}))

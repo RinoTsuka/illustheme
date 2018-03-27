@@ -18,8 +18,8 @@
 <meta name="twitter:site" content="@<?php echo get_option('it_twitter'); ?>">
 <meta name="twitter:creator" content="@<?php echo get_option('it_twitter'); ?>">
 <?php endif; ?>
-<link rel="icon" type="shortcut icon" href="<?php echo wp_get_attachment_image_src( get_option('it_favicon') , 'post-thumbnail' )[0]; ?>">
-<link rel="apple-touch-icon" href="<?php echo wp_get_attachment_image_src( get_option('it_touch_icon') , 'post-thumbnail' )[0]; ?>">
+<link rel="icon" type="image/png" href="<?php echo wp_get_attachment_image_src( get_option('it_favicon') , 'favicon' )[0]; ?>">
+<link rel="apple-touch-icon" href="<?php echo wp_get_attachment_image_src( get_option('it_favicon') , 'favicon' )[0]; ?>">
 <link rel="canonical" href="<?php bloginfo('url'); ?>">
 <style media="screen">
   .banner::before {

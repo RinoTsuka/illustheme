@@ -1,0 +1,18 @@
+.attachment-full {
+  max-width: 100%;
+  height: auto;
+}
+.upload_form {
+  display: none;
+}
+.mediauploader_slect,
+.mediauploader_clear {
+  display: inline-block;
+  color: #0073aa;
+  text-decoration: underline;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  &:hover {
+    color: #00a0d2;
+  }
+}
