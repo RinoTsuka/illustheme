@@ -26,13 +26,6 @@ $setting = array(
     'description' => '推奨：180×180(.png)',
     'value' => '',
   ),
-  'touch_icon' => array(
-    'form_type' => 'img',
-    'punctuation' => 'タッチアイコン',
-    'label' => 'タッチアイコン',
-    'description' => '推奨サイズ：180×180',
-    'value' => '',
-  ),
   'eyecatch' => array(
     'form_type' => 'img',
     'punctuation' => 'アイキャッチ',
