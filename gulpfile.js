@@ -128,6 +128,7 @@ gulp.task('html', function(){
     }))
     .pipe(replace('class="header__heading-sub">ver<', 'class="header__heading-sub">ver ' + pkg.version + '<'))
     .pipe(replace('<a href="#" class="demo__button">DOWNLOAD</a>', '<a href="https://github.com/RinoTsuka/illustheme/releases/download/' + pkg.version + '/illustheme.zip" class="demo__button">DOWNLOAD</a>'))
+    .pipe(replace('<a href="#" class="btn download__btn">ダウンロード</a>', '<a href="https://github.com/RinoTsuka/illustheme/releases/download/' + pkg.version + '/illustheme.zip" class="btn download__btn">ダウンロード</a>'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(docs))
     .pipe(browser.reload({stream:true}))
@@ -158,7 +159,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(theme))
     .pipe(gulp.dest(wordpress))
   // theme
-  gulp.src([src + 'scss/**/*.scss', '!' + src + 'scss/**/admin.scss', '!' + src + 'scss/**/sample.scss'])
+  gulp.src([src + 'scss/**/*.scss', '!' + src + 'scss/**/admin.scss', '!' + src + 'scss/**/demo.scss', '!' + src + 'scss/**/landing.scss'])
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
@@ -178,7 +179,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(theme + 'css/'))
     .pipe(gulp.dest(wordpress + 'css/'))
     .pipe(browser.reload({stream:true}))
-  gulp.src([src + 'scss/**/sample.scss', src + 'scss/**/admin.scss'])
+  gulp.src(src + 'scss/**/admin.scss')
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
@@ -194,6 +195,21 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(docs + 'css/'))
     .pipe(gulp.dest(theme + 'css/'))
     .pipe(gulp.dest(wordpress + 'css/'))
+    .pipe(browser.reload({stream:true}))
+  gulp.src([src + 'scss/**/demo.scss', src + 'scss/**/landing.scss'])
+    .pipe(plumber({
+      errorHandler: notify.onError('Error: <%= error.message %>')
+    }))
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(cmq())
+    .pipe(cleanCSS())
+    .pipe(rename({
+      extname: '.min.css'
+    }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(docs + 'css/'))
     .pipe(browser.reload({stream:true}))
 });
 
