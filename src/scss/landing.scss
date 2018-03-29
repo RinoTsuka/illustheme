@@ -123,6 +123,9 @@ body {
   }
   .heading--2 {
     margin-bottom: $gutter * 3;
+    @include breakpoints-min(lg) {
+      text-align: left;
+    }
   }
   .btn {
     display: inline-block;

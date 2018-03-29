@@ -13,6 +13,26 @@ $setting = array(
     'description' => '',
     'value' => '',
   ),
+  'themecolor' => array(
+    'form_type' => 'select',
+    'label' => 'テーマカラー',
+    'description' => '',
+    'value' => array(
+      'gray',
+      'red',
+      'pink',
+      'grape',
+      'violet',
+      'indigo',
+      'blue',
+      'cyan',
+      'teal',
+      'green',
+      'lime',
+      'yellow',
+      'orange',
+    )
+  ),
   'google_analytics' => array(
     'form_type' => 'textarea',
     'label' => 'Google Analytics',
@@ -106,7 +126,7 @@ $setting = array(
   'contact_shortcode' => array(
     'form_type' => 'text',
     'label' => 'お問い合わせショートコード',
-    'description' => '',
+    'description' => 'Contact Form 7のショートコードが入力できます。',
     'value' => '',
   ),
 );
@@ -176,6 +196,18 @@ foreach($setting as $key => $val){
                         <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
                         <td><input name="<?php echo $prefixKey; ?>" type="text" value="<?php echo stripslashes(get_option($prefixKey)); ?>" class="regular-text"></td>
                       </tr>
+                    <?php elseif ($setting[$key]['form_type'] === 'select') : ?>
+                      <tr class="<?php echo $prefixKey; ?>">
+                        <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
+                        <td><select name="<?php echo $prefixKey; ?>" class="regular-text">
+                          <?php foreach ($setting[$key]['value'] as $key => $val) : ?>
+                            <?php if (get_option($prefixKey) === $val) : ?>
+                              <option value="<?php echo $val; ?>" selected><?php echo $val; ?></option>
+                            <?php else : ?>
+                              <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+                            <?php endif; ?>
+                          <?php endforeach; ?>
+                        </select></td>
                     <?php elseif ($setting[$key]['form_type'] === 'textarea') : ?>
                       <tr class="<?php echo $prefixKey; ?>">
                         <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
@@ -197,6 +229,19 @@ foreach($setting as $key => $val){
             <tr class="<?php echo $prefixKey; ?>">
               <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
               <td><input name="<?php echo $prefixKey; ?>" type="text" value="<?php echo stripslashes(get_option($prefixKey)); ?>" class="regular-text"></td>
+            </tr>
+          <?php elseif ($setting[$key]['form_type'] === 'select') : ?>
+            <tr class="<?php echo $prefixKey; ?>">
+              <th scope="row"><label for="<?php echo $prefixKey; ?>"><?php echo $setting[$key]['label']; ?></label></th>
+              <td><select name="<?php echo $prefixKey; ?>" class="regular-text">
+                <?php foreach ($setting[$key]['value'] as $key => $val) : ?>
+                  <?php if (get_option($prefixKey) === $val) : ?>
+                    <option value="<?php echo $val; ?>" selected><?php echo $val; ?></option>
+                  <?php else : ?>
+                    <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </select></td>
             </tr>
           <?php elseif ($setting[$key]['form_type'] === 'textarea') : ?>
             <tr class="<?php echo $prefixKey; ?>">

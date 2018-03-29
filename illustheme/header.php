@@ -7,7 +7,7 @@
 <meta name="description" content="<?php bloginfo('description'); ?>">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<link href="<?php bloginfo('template_url'); ?>/css/style-cyan.min.css" rel="stylesheet">
+<link href="<?php bloginfo('template_url'); ?>/css/style-<?php echo get_option('it_themecolor'); ?>.min.css" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:title" content="<?php echo get_option('blogname'); ?>">
 <meta property="og:description" content="<?php echo get_option('blogdescription'); ?>">
