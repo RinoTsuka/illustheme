@@ -1,0 +1,21 @@
+.nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 14px;
+  text-align: left;
+  padding: #{$gutter * 0.5} $gutter;
+  &__list {
+  }
+  &__item {
+  }
+  &__link {
+    color: $oc-cyan-0;
+    text-decoration: none;
+    @include breakpoints-min(md) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.footer {
+  background-color: $oc-gray-8;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: $oc-gray-5;
+  padding-top: $gutter * 4.5;
+  padding-bottom: $gutter * 4.5;
+  a {
+    color: #fff;
+    text-decoration: none;
+    @include breakpoints-min(md) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

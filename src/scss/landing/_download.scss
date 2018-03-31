@@ -1,0 +1,46 @@
+.download {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  height: 256px;
+  padding: 0;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(../img/private/landing/landing-bg.jpg) center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .btn {
+    display: inline-block;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 10px 10px rgba($oc-cyan-9, 0.6);
+    background-color: #fff;
+    border-radius: 999px;
+    font-size: 20px;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: $oc-cyan-5;
+    margin-top: 128px;
+    transform: translateY(-50%);
+    padding: #{$gutter * 1} #{$gutter * 3};
+    &:active {
+      box-shadow: 0 6px 8px rgba($oc-cyan-9, 0.7);
+    }
+    @include breakpoints-min(md) {
+      &:hover {
+        box-shadow: 0 13px 15px rgba($oc-cyan-9, 0.5);
+      }
+      &:active {
+        box-shadow: 0 6px 8px rgba($oc-cyan-9, 0.7);
+      }
+    }
+  }
+}

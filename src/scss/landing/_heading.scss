@@ -1,0 +1,10 @@
+.heading {
+  &--2 {
+    font-size: 28px;
+    font-weight: 100;
+    text-align: center;
+    line-height: 1.4;
+    color: $oc-gray-9;
+    margin-bottom: $gutter * 2;
+  }
+}

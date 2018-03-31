@@ -1,0 +1,53 @@
+.browser {
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba($oc-gray-9, 0.08), 0 18px 20px rgba($oc-gray-9, 0.15);
+  border-radius: 5px;
+  margin-bottom: $gutter * 2;
+  &__header {
+    background-color: #f0f0f0;
+    line-height: 0;
+    padding: 12px 8px;
+  }
+  span {
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid;
+    width: 12px;
+    height: 12px;
+    margin-left: 4px;
+    margin-right: 4px;
+    &:nth-of-type(1) {
+      border-color: #e13a32;
+      background-color: #ff5f57;
+    }
+    &:nth-of-type(2) {
+      border-color: #e09c06;
+      background-color: #ffbd2e;
+    }
+    &:nth-of-type(3) {
+      border-color: #02a91a;
+      background-color: #28ca41;
+    }
+  }
+  &__img-outer {
+    position: relative;
+    overflow: hidden;
+    height: 312px;
+    @include breakpoints-min(md) {
+      height: 512px;
+    }
+    @include breakpoints-min(lg) {
+      height: 1123px;
+    }
+    @include breakpoints-min(xl) {
+      height: 1430px;
+    }
+  }
+  &__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+  }
+}

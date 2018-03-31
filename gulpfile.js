@@ -96,10 +96,10 @@ var jsHeader = [
 --------------------*/
 gulp.task('server', function() {
   browser({
-    /*server: {
+    server: {
       baseDir: docs
-    }*/
-    proxy: 'localhost:8004'
+    }
+    //proxy: 'localhost:8004'
   });
 });
 

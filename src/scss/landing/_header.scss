@@ -1,0 +1,13 @@
+.header {
+  position: relative;
+  background-color: $oc-cyan-4;
+  font-size: 34px;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  padding-top: $gutter * 1.5;
+  padding-bottom: $gutter * 1.5;
+  &__title {
+    font-weight: 100;
+  }
+}

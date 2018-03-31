@@ -1,0 +1,50 @@
+.info {
+  padding-top: $gutter * 5;
+  padding-bottom: $gutter * 6.5;
+  &__body {
+    @include breakpoints-min(lg) {
+      width: #{$gutter * 30};
+      padding-top: $gutter * 3.5;
+    }
+  }
+  .browser {
+    width: 100%;
+    @include breakpoints-min(lg) {
+      width: 550px;
+      position: absolute;
+      left: $gutter * 33;
+    }
+    @include breakpoints-min(xl) {
+      width: 700px;
+    }
+  }
+  .offer {
+    color: $oc-gray-7;
+    font-size: 13px;
+    margin-top: $gutter * 1.5;
+  }
+  .heading--2 {
+    margin-bottom: $gutter * 3;
+    @include breakpoints-min(lg) {
+      text-align: left;
+    }
+  }
+  .btn {
+    display: inline-block;
+    border-radius: 999px;
+    background-color: $oc-cyan-4;
+    font-size: 18px;
+    font-weight: 100;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-top: $gutter * 3.5;
+    padding: #{$gutter * 0.75} #{$gutter * 2.5};
+  }
+  p {
+    color: #686f77;
+    margin-top: $gutter * 1.5;
+    &:last-of-type {
+    }
+  }
+}
