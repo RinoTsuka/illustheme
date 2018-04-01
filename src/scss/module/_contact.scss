@@ -34,11 +34,11 @@
     margin-bottom: $gutter * 3;
     @include breakpoints-min(md) {
       text-align: center;
-      margin-right: $gutter * 4;
     }
     @include breakpoints-min(lg) {
-      width: calc(100% - #{$gutter * 4 + $gutter * 26});
       text-align: left;
+      margin-right: $gutter * 4;
+      width: calc(100% - #{$gutter * 4 + $gutter * 26});
     }
   }
   &__title {
