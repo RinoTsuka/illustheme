@@ -1,4 +1,5 @@
 .demo-profile {
+  order: -1;
   position: relative;
   &__inner {
     overflow: hidden;
@@ -10,9 +11,6 @@
     margin-right: auto;
     padding-bottom: $gutter * 1.5;
     @include breakpoints-min(md) {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
       width: 300px;
     }
   }
@@ -55,6 +53,7 @@
   }
   .sns {
     margin-top: 12px;
+    padding: 0;
     @include breakpoints-min(sm) {
       justify-content: center;
       margin-top: 12px;

@@ -1,0 +1,51 @@
+.career {
+  border-top: 1px solid $oc-gray-3;
+  border-bottom: 1px solid $oc-gray-3;
+  width: 100%;
+  margin-top: $gutter * 3;
+  margin-bottom: $gutter * 2.5;
+  padding-top: $gutter * 1.75;
+  padding-bottom: $gutter * 1.75;
+  @include breakpoints-min(sm) {
+    margin-top: $gutter * 2;
+  }
+  &__list {
+    font-size: 13px;
+    line-height: 1.7;
+    @include breakpoints-min(sm) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include breakpoints-min(xl) {
+      padding-left: $gutter;
+      padding-right: $gutter;
+    }
+  }
+  &__title {
+    color: $theme-color-6;
+    width: $gutter * 5;
+    margin-bottom: $gutter * 0.5;
+    @include breakpoints-min(sm) {
+      margin-bottom: $gutter * 1.25;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__item {
+    margin-bottom: $gutter * 1.75;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    @include breakpoints-min(sm) {
+      width: calc(100% - #{$gutter * 5});
+      margin-bottom: $gutter * 1.25;
+    }
+    li {
+      margin-bottom: $gutter * 0.675;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

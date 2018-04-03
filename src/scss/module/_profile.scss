@@ -84,5 +84,8 @@
     }
   }
   &__text {
+    p {
+      margin-bottom: $gutter;
+    }
   }
 }

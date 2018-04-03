@@ -9,6 +9,39 @@
 
 
 
+  <?php
+    $loop = new WP_Query(array("post_type" => "event"));
+    $date = date("Y-m-d");
+    $count = 0;
+    if ( $loop->have_posts() ) : while($loop->have_posts()): $loop->the_post();
+  ?>
+    <?php if ( $count === 0 ) : $count++; ?>
+      <article class="article event">
+    <?php endif; ?>
+      <?php if ( get_post_meta($post->ID, 'event_end-date', true) >= $date ) : ?>
+        <div class="event__inner">
+          <div class="event__img-outer"><img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' )[0]; ?>" alt="" class="event__img"></div>
+          <div class="event__body">
+            <?php if ( get_post_meta($post->ID, 'event_url', true) ) : ?>
+              <div class="event__title"><a href="<?php echo get_post_meta($post->ID, 'event_url', true); ?>" target="_blank"><?php the_title(); ?></a></div>
+            <?php else : ?>
+              <div class="event__title"><?php the_title(); ?></div>
+            <?php endif; ?>
+            <div class="event__meta">
+              <div class="event__meta__item"><img src="<?php bloginfo('template_url'); ?>/img/public/icon/calendar.svg" alt="" class="event__meta__icon"><?php echo get_post_meta($post->ID, 'event_date', true); ?></div>
+              <div class="event__meta__item"><img src="<?php bloginfo('template_url'); ?>/img/public/icon/map.svg" alt="" class="event__meta__icon"><?php echo get_post_meta($post->ID, 'event_position', true); ?></div>
+            </div>
+            <div><?php echo get_post_meta($post->ID, 'event_comment', true); ?></div>
+          </div>
+        </div>
+      <?php endif; ?>
+  <?php endwhile; ?>
+    <?php if ( $count === 1 ) : ?>
+      </article>
+    <?php endif; ?>
+  <?php endif; ?>
+
+
 
   <article class="article profile">
     <div class="profile__inner">
@@ -125,7 +158,7 @@
             </a>
           <?php else: ?>
             <a href="<?php echo get_post_meta($post->ID, 'link_name', true); ?>" target="_blank" class="link-collection__link">
-              <img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'post-thumbnail' )[0]; ?>" class="link-collection__img">
+              <img src="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' )[0]; ?>" class="link-collection__img">
               <div class="link-collection__tooltip"><?php the_title(); ?></div>
             </a>
           <?php endif; ?>

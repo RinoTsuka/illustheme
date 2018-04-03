@@ -40,8 +40,8 @@ function admin_style(){
 }
 add_action( 'admin_enqueue_scripts', 'admin_style' );
 
-
-function create_post_type() {
+// リンク集
+function link_post_type() {
   $exampleSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
     'title',  // 記事タイトル
     'thumbnail',  // アイキャッチ画像
@@ -56,12 +56,32 @@ function create_post_type() {
     )
   );
 }
-add_action( 'init', 'create_post_type' );
+add_action( 'init', 'link_post_type' );
+
+// イベント
+function event_post_type() {
+  $exampleSupports = [  // supports のパラメータを設定する配列（初期値だと title と editor のみ投稿画面で使える）
+    'title',  // 記事タイトル
+    'thumbnail',  // アイキャッチ画像
+  ];
+  register_post_type( 'event',  // カスタム投稿名
+    array(
+      'label' => 'イベント',  // 管理画面の左メニューに表示されるテキスト
+      'public' => true,  // 投稿タイプをパブリックにするか否か
+      'has_archive' => true,  // アーカイブを有効にするか否か
+      'menu_position' => 5,  // 管理画面上でどこに配置するか今回の場合は「投稿」の下に配置
+      'supports' => $exampleSupports  // 投稿画面でどのmoduleを使うか的な設定
+    )
+  );
+}
+add_action( 'init', 'event_post_type' );
+
 
 function custom_post_one_columns_screen_layout() {
   return 1;
 }
 add_filter( 'get_user_option_screen_layout_banner', 'custom_post_one_columns_screen_layout' );
+add_filter( 'get_user_option_screen_layout_event', 'custom_post_one_columns_screen_layout' );
 
 
 //画像アップロード用のタグを出力する
@@ -191,6 +211,53 @@ function save_link_fields( $post_id ) {
   }
 }
 add_action('save_post', 'save_link_fields');
+
+
+// 固定カスタムフィールドボックス
+function add_event_fields() {
+  add_meta_box( 'event_setting', 'イベントの情報', 'insert_event_fields', 'event', 'normal');
+}
+add_action('admin_menu', 'add_event_fields');
+
+// カスタムフィールドの入力エリア
+function insert_event_fields() {
+  global $post;
+  echo '日程： <input type="text" name="event_date" value="'.get_post_meta($post->ID, 'event_date', true).'" size="50" /><br>';
+  echo '公開終了日： <input type="date" name="event_end-date" value="'.get_post_meta($post->ID, 'event_end-date', true).'" size="50" /><br>';
+  echo '配置： <input type="text" name="event_position" value="'.esc_html(get_post_meta($post->ID, 'event_position', true)).'" size="50" /><br>';
+  echo 'コメント： <input type="text" name="event_comment" value="'.esc_html(get_post_meta($post->ID, 'event_comment', true)).'" size="50" /><br>';
+  echo 'URL： <input type="text" name="event_url" value="'.esc_html(get_post_meta($post->ID, 'event_url', true)).'" size="50" />';
+}
+
+// カスタムフィールドの値を保存
+function save_event_fields( $post_id ) {
+  if(!empty($_POST['event_date'])){
+    update_post_meta($post_id, 'event_date', $_POST['event_date'] );
+  }else{
+    delete_post_meta($post_id, 'event_date');
+  }
+  if(!empty($_POST['event_end-date'])){
+    update_post_meta($post_id, 'event_end-date', $_POST['event_end-date'] );
+  }else{
+    delete_post_meta($post_id, 'event_end-date');
+  }
+  if(!empty($_POST['event_position'])){
+    update_post_meta($post_id, 'event_position', $_POST['event_position'] );
+  }else{
+    delete_post_meta($post_id, 'event_position');
+  }
+  if(!empty($_POST['event_comment'])){
+    update_post_meta($post_id, 'event_comment', $_POST['event_comment'] );
+  }else{
+    delete_post_meta($post_id, 'event_comment');
+  }
+  if(!empty($_POST['event_url'])){
+    update_post_meta($post_id, 'event_url', $_POST['event_url'] );
+  }else{
+    delete_post_meta($post_id, 'event_url');
+  }
+}
+add_action('save_post', 'save_event_fields');
 
 
 // 自動タイトル
