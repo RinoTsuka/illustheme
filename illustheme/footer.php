@@ -19,7 +19,7 @@
     </div>
     <div class="credit">
       <p>Powered by WordPress<br>
-      <a href="#" target="_blank">Illustheme</a> Theme designed by <a href="#" target="_blank">sora-maru</a></p>
+      <a href="//sora-maru.jp/illustheme/" target="_blank">Illustheme</a> Theme designed by <a href="//sora-maru.jp/" target="_blank">sora-maru</a></p>
     </div>
   </div>
 </footer>
